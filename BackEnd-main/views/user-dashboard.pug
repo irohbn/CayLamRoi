@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title User Dashboard
+    link(rel="stylesheet", href="/public/dashboard.css")
+  body
+    .dashboard
+      .sidebar
+        h2 User Dashboard
+        ul
+          li: a(href="#") Home
+          li: a(href=`/profile`) Profile
+          li: a(href="#") Settings
+          li: a(href="/logout") Logout
+      .main-content
+        .header
+          h1 Welcome, User!
+        .content
+          h2 Overview
+          p Here is a summary of your account activities.
+          .cards
+            .card
+              h3 Card Title 1
+              p Some details about this section.
+            .card
+              h3 Card Title 2
+              p Another set of details.
+            .card
+              h3 Card Title 3
+              p More information about this section.
+          .info-section
+            h2 Additional Info
+            p This section contains more details and insights for the user.

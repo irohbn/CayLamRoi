@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title Registration Form
+    link(rel="stylesheet", href="/public/register.css")
+  body
+    .wrapper
+      .title Registration Form
+      form(action="/register" method="POST")
+        .form
+          .inputfield
+            label First Name
+            input.input(type="text" name="firstName" required)
+          .inputfield
+            label Last Name
+            input.input(type="text" name="lastName" required)
+          .inputfield
+            label Username
+            input.input(type="text" name="username" required)
+          .inputfield
+            label Password
+            input.input(type="password" name="password" required)
+          .inputfield
+            label Role
+            .custom_select
+              select(name="role" required)
+                option(value="") Select
+                option(value="user") User
+                option(value="admin") Admin
+          .inputfield
+            label Email
+            input.input(type="email" name="email" required)
+          .inputfield
+            label Phone Number
+            input.input(type="tel" name="phoneNumber")
+          .inputfield
+            label Address
+            textarea.textarea(name="address")
+          .inputfield
+            input.btn(type="submit" value="Register")

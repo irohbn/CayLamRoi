@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Book Management
+    link(rel='stylesheet' href='public/create-book.css')
+  body
+    h1 Add New Book
+    form(action='/book' method='POST' enctype='multipart/form-data')
+      div
+        label(for='title') Title:
+        input(type='text' name='title' required)
+      div
+        label(for='author') Author:
+        input(type='text' name='author' required)
+      div
+        label(for='genre') Genre:
+        input(type='text' name='genre' required)
+      div
+        label(for='price') Price:
+        input(type='number' name='price' required)
+      div
+        label(for='image') Image:
+        input(type='file' name='image' required)
+      div
+        label(for='description') Description:
+        textarea(name='description' required class ="form-description")
+      div
+        input(type='submit' value='Add Book')
+    a(href='/books') Back to Book List

@@ -1,0 +1,15 @@
+html 
+    head 
+        title User Management 
+        link(rel="stylesheet" href= '/public/update-user.css')
+
+    body 
+    h2 Update User
+    form(action=`/user/${user._id}`,method='POST')
+        input(type="text" name="firstName" value=user.firstName)
+        input(type="text" name="lastName" value=user.lastName)
+        input(type="text" name="address" value=user.address)
+        input(type="text" name="email" value=user.email)
+        input(type="number" name="phoneNumber" value=user.phoneNumber)
+        input(type="submit" value="Update") 
+    a(href='/users') Back to User List

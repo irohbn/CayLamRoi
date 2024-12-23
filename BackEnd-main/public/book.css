@@ -1,0 +1,118 @@
+
+.header-container {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    gap: 10px;
+}
+  
+.add-book-container {
+    text-align: left;
+}
+form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+input[type="text"] {
+    padding: 8px;
+    width: 250px; /* Adjusted width */
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 83%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+img {
+    width: 100px; /* Đặt chiều rộng cố định cho tất cả ảnh */
+    height: 80px; /* Đặt chiều cao cố định cho tất cả ảnh */
+    object-fit: cover; /* Cố định tỉ lệ khung hình mà không làm biến dạng ảnh */
+    border-radius: 5px; /* Thêm bo tròn cho ảnh nếu cần */
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+    background-color: #e7f1ff;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+a:focus {
+    outline: 2px dashed #0056b3;
+    outline-offset: 2px;
+}
+
+a:active {
+    color: #003d80;
+}
+
+.add-book-container a {
+    margin-right: 20px;
+}
+
+td a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #dc3545;
+}
+
+td a[href*="update"] {
+    color: #28a745;
+}
+td.description {
+    white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis; 
+    max-width: 300px; 
+}
+

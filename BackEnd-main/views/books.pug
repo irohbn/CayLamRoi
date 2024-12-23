@@ -1,0 +1,38 @@
+extends admin.pug
+
+block content
+  head
+    title Book Management
+  link(rel="stylesheet" href="/public/book.css")
+  body
+    div(class="header-container")
+      div(class="add-book-container")
+        a(href="/create-book") Add Book
+      form(action="/search-admin" method="GET")
+        input(type="text" name="query" placeholder="Search by Title or Author")
+        button(type="submit") Search
+
+    table
+      thead 
+        tr
+          th Image
+          th Title
+          th Description
+          th Genre
+          th Author
+          th Price
+          th Action
+      tbody
+        each book in books
+          tr
+            td
+              img(src=book.image, alt=`Image of ${book.title}`, style="width: 100px; height: auto")
+            td=book.title
+            td(class="description")=book.description
+            td=book.genre
+            td=book.author
+            td=book.price
+            td
+              a(href=`/books/${book._id}`) Delete
+              br
+              a(href=`/update-book/${book._id}`) Update

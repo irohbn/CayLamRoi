@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title Book Management 
+    link(rel='stylesheet' href='/public/update-book.css')
+  body
+    h1 Update Book
+    form(action=`/book/${book._id}` method='POST')
+      div
+        label(for='title') Title:
+        input(type='text' name='title' value=book.title)
+      div
+        label(for='genre') Genre:
+        input(type='text' name='genre' value=book.genre)
+      div
+        label(for='author') Author:
+        input(type='text' name='author' value=book.author)
+      div
+        label(for='price') Price:
+        input(type='number' name='price' value=book.price)
+      div
+        label(for='description') Description:
+        textarea(name='description' required class ="form-description" )= book.description
+      div
+        input(type='submit' value="Update")
+    a(href='/books') Back to Book List

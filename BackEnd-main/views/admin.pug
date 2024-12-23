@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    title Admin Dashboard
+    link(rel="stylesheet", href="/public/admin.css")
+  body
+    .container
+      // Navigation Sidebar
+      .sidebar
+        h2 Admin Panel
+        ul
+          li: a(href="#") Dashboard
+          li: a(href=`#`) Profile
+          li: a(href="/users") User Management
+          li: a(href="/books") Book Management
+          li: a(href="#") Setting
+          li: a(href="/logout") Logout
+
+      block content

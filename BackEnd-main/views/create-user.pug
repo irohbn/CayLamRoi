@@ -1,0 +1,14 @@
+html 
+    head 
+        title Book Management 
+        link(rel="stylesheet" href='/public/create-user.css')
+    body 
+        h2 Create User 
+        form(action="/user" method="post") 
+            input(type="text" name="firstName" placeholder="First Name")
+            input(type="text" name="lastName" placeholder="Last Name")
+            input(type="text" name="address" placeholder="Address")
+            input(type="text" name="email" placeholder="Email")
+            input(type="number" name="phoneNumber" placeholder="Phone Number")
+            input(type="submit" value="Create") 
+        a(href='/users') Back to User List

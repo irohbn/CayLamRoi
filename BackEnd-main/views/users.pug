@@ -1,0 +1,31 @@
+extends admin.pug 
+
+block content
+
+    head
+        title User Management 
+        link(rel="stylesheet" href="public/user.css")
+        
+    body
+        div(class="add-user-container")
+             a(href="/create-user") Add User 
+        table(class="content-table") 
+            thead 
+                td First Name
+                td Last Name
+                td Address
+                td Email
+                td Phone Number
+                td Action
+            tbody
+                each user in users 
+                    tr
+                        td=user.firstName
+                        td=user.lastName 
+                        td=user.address 
+                        td=user.email 
+                        td=user.phoneNumber 
+                        td 
+                            a(href=`/users/${user._id}`) Delete
+                            br
+                            a(href=`/update-user/${user._id}`) Update 

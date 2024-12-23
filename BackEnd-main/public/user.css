@@ -1,0 +1,87 @@
+*{
+  font-family: 'Times New Roman', sans-serif
+}
+
+.content-table {
+  width: 85%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  margin-left: auto; 
+  margin-right: 10px;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+.add-user-container {
+  text-align: right; 
+  margin-top: 20px;
+  margin-bottom: 10px; 
+}
+a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+a:hover {
+  color: #0056b3;
+  background-color: #e7f1ff;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+a:focus {
+  outline: 2px dashed #0056b3;
+  outline-offset: 2px;
+}
+
+a:active {
+  color: #003d80;
+}
+
+.add-book-container a {
+  margin-right: 20px;
+}
+
+td a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #dc3545;
+}
+
+td a[href*="update"] {
+  color: #28a745;
+}

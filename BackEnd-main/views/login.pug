@@ -1,0 +1,15 @@
+html 
+    head 
+        title Login 
+        link(rel="stylesheet" href="public/login.css")
+    body 
+        form(action="/login" method="POST")
+            h2 Welcome, User! 
+            p Please login! 
+            input(type="text" name="username" placeholder="Username")
+            input(type="password" name="password" placeholder="Password")
+            input(type="submit" value="Log In")
+            div.links
+                a(href="#") Forgot Password 
+                a(href="/register") Register
+                a(href="/") Back

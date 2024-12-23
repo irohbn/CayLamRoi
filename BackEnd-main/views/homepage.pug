@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    title Books Management
+    link(rel="stylesheet" href="/public/homepage.css")
+  body
+    header.navbar
+      div.logo
+        a(href="#")
+            img(src="public/images/logo/default_university.png" alt="Demo Logo")
+      nav.nav-links
+        ul
+          li
+            a(href="/") Home
+          li
+            a(href="#") Other
+            ul.dropdown
+              li
+                a(href="#") News
+              li
+                a(href="#") About us 
+          li
+            a(href="/login") Login
+    img(src="public/images/logo/default_holder.jpg" alt="Header Image" required class="background-img")
+    
+    main
+      section#book-list
+      div.title
+        h2 Our Books Lists
+
+        form(action="/search" method="GET")
+          input(type="text" name="query" placeholder="Search books...")
+          button(type="submit") Search
+
+      div.books-list
+        each book in books || []
+          article.book-card
+            img(src=book.image alt=`Image of ${book.title}`)
+            h4= book.title
+            p Author: #{book.author}
+            button.open-popup(data-id=book._id) Quick View
+
+
+      // Popup container
+      div.popup-overlay
+        div.popup-content
+          button.close-popup(type="button") ×
+          img.popup-image(src="", alt="Book Image")
+          h3.popup-title Book Title
+          p.popup-author Author:
+          p.popup-genre Genre:
+          p.popup-description Description:
+    
+    script(src="/public/script.js")
+
+
+    footer
+      p &copy; 2024 Books Management. All rights reserved.
+
