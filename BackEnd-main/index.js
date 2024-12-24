@@ -70,7 +70,12 @@ fastify.register(require("@fastify/formbody"));
 
 fastify.register(authRoutes);
 
-fastify.register(require("@fastify/multipart"), { attachFieldsToBody: true });
+fastify.register(require("@fastify/multipart"), {
+  attachFieldsToBody: true,
+  limits: {
+    fieldSize: 50 * 1024 * 1024,
+  },
+});
 fastify.register(fastifyView, {
   engine: {
     pug: require("pug"),

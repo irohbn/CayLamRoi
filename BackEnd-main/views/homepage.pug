@@ -37,7 +37,7 @@ html
           article.book-card
             img(src=book.image alt=`Image of ${book.title}`)
             h4= book.title
-            p Author: #{book.author}
+            p Price: #{book.price}
             button.open-popup(data-id=book._id) Quick View
 
 
@@ -47,8 +47,13 @@ html
           button.close-popup(type="button") ×
           img.popup-image(src="", alt="Book Image")
           h3.popup-title Book Title
+          p.popup-price Price:
+          p.popup-page Page:
+          p.popup-code Code:
           p.popup-author Author:
           p.popup-genre Genre:
+          
+
           p.popup-description Description:
     
     script(src="/public/script.js")

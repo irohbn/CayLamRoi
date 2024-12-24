@@ -21,6 +21,8 @@ block content
           th Genre
           th Author
           th Price
+          th Page 
+          th Code
           th Action
       tbody
         each book in books
@@ -32,6 +34,9 @@ block content
             td=book.genre
             td=book.author
             td=book.price
+            td=book.page
+            td=book.code
+
             td
               a(href=`/books/${book._id}`) Delete
               br

@@ -17,7 +17,13 @@ html
         input(type='text' name='author' value=book.author)
       div
         label(for='price') Price:
-        input(type='number' name='price' value=book.price)
+        input(type='text' name='price' value=book.price)
+      div
+        label(for='page') Page:
+        input(type='text' name='page' value=book.page)
+      div
+        label(for='code') Code:
+        input(type='text' name='code' value=book.code)      
       div
         label(for='description') Description:
         textarea(name='description' required class ="form-description" )= book.description
