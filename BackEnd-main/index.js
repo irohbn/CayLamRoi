@@ -1,22 +1,25 @@
 const { pipeline } = require("node:stream/promises");
 const Fastify = require("fastify");
 const path = require("path");
+const fs = require('fs')
 const fastify = Fastify({
   logger: true,
   disableRequestLogging: true,
 });
 const crypto = require("crypto");
+const cors = require("@fastify/cors")
+fastify.register(cors, { origin: '*' });
+
 
 const jwtSecret = crypto.randomBytes(64).toString("hex");
-const fastifyView = require("@fastify/view");
 const mongoose = require("mongoose");
 
 //import route
-const BookRoutes = require("./router/BookRoutes");
-const UserRoutes = require("./router/UserRoutes");
-const authRoutes = require("./router/authRoutes");
-const auth = require("./auth");
-const authority = require("./authority");
+const BookRoutes = require("./books/BookRoutes");
+const UserRoutes = require("./users/UserRoutes");
+const authRoutes = require("./auth/authRoutes");
+const auth = require("./auth/auth");
+const authority = require("./auth/authority");
 
 // MongoDB URI
 const dbURI = "mongodb://localhost:27017/BanTruyen";
@@ -39,13 +42,7 @@ process.on("SIGINT", () => {
 });
 
 //Server
-BookRoutes.forEach((route) => {
-  fastify.route(route);
-}); //Duyệt qua từng phần tử trong BookRoutes
 
-UserRoutes.forEach((route) => {
-  fastify.route(route);
-}); //Duyệt qua từng phần tử trong UserRoutes
 
 fastify.register(require("@fastify/jwt"), {
   secret: jwtSecret,
@@ -76,55 +73,26 @@ fastify.register(require("@fastify/multipart"), {
     fieldSize: 50 * 1024 * 1024,
   },
 });
-fastify.register(fastifyView, {
-  engine: {
-    pug: require("pug"),
-  },
-  root: "views",
-  propertyName: "render",
-  asyncPropertyName: "asyncReder",
-});
 
 fastify.register(require("@fastify/static"), {
-  root: path.join(__dirname, "public"),
-  prefix: "/public/",
+  root: path.join(__dirname, 'public'),  
+  prefix: "/img/",  
 });
 
-fastify.get("/create-user", function (req, rep) {
-  rep.render("create-user");
+
+BookRoutes.forEach((route) => {
+  fastify.route(route);
+}); 
+
+UserRoutes.forEach((route) => {
+  fastify.route(route);
+}); 
+
+fastify.get('/', async (req, rep) => {
+  return { message: 'Hello from Fastify!' };
 });
 
-fastify.get("/create-book", function (req, rep) {
-  rep.render("create-book");
-});
 
-fastify.get("/login", function (req, rep) {
-  rep.render("login");
-});
-
-fastify.get("/register", function (req, rep) {
-  rep.render("register");
-});
-
-fastify.get("/logout", function (req, rep) {
-  rep.render("logout");
-});
-
-fastify.get("/user-dashboard", function (req, rep) {
-  rep.render("user-dashboard");
-});
-
-fastify.get(
-  "/admin",
-  { onRequest: [auth, authority("admin")] },
-  function (req, rep) {
-    rep.render("admin");
-  }
-);
-
-//fastify.get('/', (req, rep) => {
-// rep.render('homepage');
-//});
 
 fastify.listen({ port: 5000 }, (err) => {
   if (err) {

@@ -18,7 +18,12 @@ import Bookshop from "./page/Book/Bookshop";
 import Admin from "./page/Admin";
 import { AuthProvider } from "./JS/auth/auth";
 import ProtectedRoute from "./JS/auth/ProtectedRoute";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import BookList from "./page/BookList";
+import AddBookForm from "./page/AddBook";
+import UpdateBookForm from "./page/UpdateBook";
+
+
 function App() {
   const [cartBooks, setCartBooks] = useState([]);
   const addCart = (product)=>{
@@ -35,6 +40,21 @@ function App() {
   const removeProductCart = (productTitle) =>{
     setCartBooks(cartBooks.filter(product => product.title !== productTitle));
   }
+  
+  const [data, setData]=useState(null)
+  useEffect(()=>{
+    fetch('http://localhost:5000/')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+
+  })
+
+  const handleBookAdded = (newBook) => {
+    setBooks((prevBooks) => [...prevBooks, newBook]);
+  };
+
+
   return (
     <AuthProvider>
       {" "}
@@ -48,6 +68,9 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail addCart = {addCart}/>} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart cartsBook = {cartBooks} removeProductCart={removeProductCart}/>}/>
+          <Route path="/books" element={<BookList/>}/>
+          <Route path="/addbook" onBookAdded={handleBookAdded} element={<AddBookForm/>}/>
+          <Route path="/update-book/:id" element={<UpdateBookForm/>}/>
           <Route
             path="/admin"
             element={
